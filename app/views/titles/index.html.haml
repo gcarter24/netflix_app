@@ -1,10 +1,26 @@
 - @titles.each do |title|
-  %h2 Title: #{title.name}
-  %h3 Description: #{title.description} 
-  %h4 Director: #{title.director}
-  %h4 Cast: #{title.cast}
-  %h4 Rating: #{title.rating}
-  %h4 Year: #{title.release_year}
-  %h4 Duration: #{title.duration}
-  %h4 Country: #{title.country}
+  %h2 
+    Title:
+    = title.name
+  %h3 
+    Description:
+    = title.description
+  %h4 
+    Director:
+    = title.director
+  %h4 
+    Cast:
+    = title.cast
+  %h4 
+    Rating:
+    = title.rating
+  %h4 
+    Year:
+    = title.release_year
+  %h4 
+    Duration:
+    = title.duration
+  %h4 
+    Country:
+    = title.country
   %hr
