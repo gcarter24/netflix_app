@@ -11,7 +11,8 @@ class TitlesController < ApplicationController
   end
 
   def create
-    render plain: params[:title]
+    @title = Title.new(params.require(:title).permit(:name, :description, :director, :cast, :country, :release_year, :rating, :duration, :media_type))
+    # @title.save
   end
 
   def update
