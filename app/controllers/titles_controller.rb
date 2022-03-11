@@ -27,13 +27,17 @@ class TitlesController < ApplicationController
 
   def update
     @title = Title.find_by(id: params[:id])
-    if @title.update(params.require(:title).permit(:name, :description, :director, :cast, :country, :release_year, :rating, :duration, :media_type)
+    if @title.update(params.require(:title).permit(:name, :description, :director, :cast, :country, :release_year, :rating, :duration, :media_type))
       flash[:notice] = "Title was updated successfully"
-    else 
-      render 'edit'
-    end 
+      redirect_to @title
+    else
+      render "edit"
+    end
   end
 
   def destroy
+    @title = Title.find_by(id: params[:id])
+    @title.destroy
+    redirect_to titles_path
   end
 end

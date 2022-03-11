@@ -14,4 +14,8 @@
   = title.duration
   %h4 Country: 
   = title.country
+  %h4.colspan-3 Actions:
+  = link_to 'Show', title_path(title)
+  = link_to 'Edit', edit_title_path(title)
+  = link_to 'Delete', title_path(title), method: :delete
   %hr
