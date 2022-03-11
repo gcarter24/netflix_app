@@ -8,12 +8,17 @@ class TitlesController < ApplicationController
   end
 
   def new
+    @title = Title.new
   end
 
   def create
     @title = Title.new(params.require(:title).permit(:name, :description, :director, :cast, :country, :release_year, :rating, :duration, :media_type))
-    # @title.save
-    redirect_to title_path(@title)
+    if @title.save
+      flash[:notice] = "Title was created successfully"
+      redirect_to title_path(@title)
+    else
+      render "new"
+    end
   end
 
   def update

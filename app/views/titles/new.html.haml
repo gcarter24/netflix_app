@@ -1,4 +1,8 @@
 %h2 Create a new Title 
+- if @title.errors.any?
+  %h2 The following errors prevented the title from being saved. 
+  - @title.errors.full_messages.each do |msg|
+    %li= msg
 = form_with scope: :title, url: titles_path, local: true do |f|
   %p 
     = f.label :title
