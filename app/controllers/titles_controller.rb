@@ -11,6 +11,10 @@ class TitlesController < ApplicationController
     @title = Title.new
   end
 
+  def edit
+    @title = Title.find_by(id: params[:id])
+  end
+
   def create
     @title = Title.new(params.require(:title).permit(:name, :description, :director, :cast, :country, :release_year, :rating, :duration, :media_type))
     if @title.save
