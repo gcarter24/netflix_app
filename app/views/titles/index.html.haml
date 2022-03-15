@@ -17,5 +17,5 @@
   %h4.colspan-3 Actions:
   = link_to 'Show', title_path(title)
   = link_to 'Edit', edit_title_path(title)
-  = link_to 'Delete', title_path(title), method: :delete
+  = link_to 'Delete', title_path(title), method: :delete, data: { confirm: "Are you sure?"}
   %hr
