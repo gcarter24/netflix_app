@@ -1,3 +1,8 @@
+= form_tag "/titles", method: "GET" do
+  = label_tag :title
+  = text_field_tag :name, params[:name]
+  = submit_tag "Search"
+
 - @titles.each do |title|
   %h2 Title: #{title.name}
   %h3 Description: 

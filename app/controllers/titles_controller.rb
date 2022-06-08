@@ -3,6 +3,10 @@ class TitlesController < ApplicationController
 
   def index
     @titles = Title.all.order(:name => :asc)
+
+    if params[:name] 
+      @titles = @titles.where("name LIKE ?", "%#{params[:name]}%")
+    end
   end
 
   def show
