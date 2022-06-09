@@ -3,9 +3,8 @@ class TitlesController < ApplicationController
 
   def index
     @titles = Title.all.order(:name => :asc)
-
-    if params[:name] 
-      @titles = @titles.where("name LIKE ?", "%#{params[:name]}%")
+    title_params.each do |key, value|
+      @titles = @titles.public_send("filter_by_#{key}", value) if value.present?
     end
   end
 
@@ -50,6 +49,6 @@ class TitlesController < ApplicationController
   end
 
   def title_params
-    params.require(:title).permit(:name, :description, :director, :cast, :country, :release_year, :rating, :duration, :media_type)
+    params.permit(:name, :description, :director, :cast, :country, :release_year, :rating, :duration, :media_type)
   end
 end
